@@ -30,13 +30,67 @@ Reuse existing functionality in libraries and in the std::string class!
 */
 
 #include <iostream>
+#include <string>
+#include <vector>
+
+using namespace  std;
 
 int main() {
     
     string alphabet {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     string key  {"XZNLWEBGJHQDYVTKFUOMPCIASRxznlwebgjhqdyvtkfuompciasr"};
-    
-    
+
+    string message {};
+    string encrypted {};
+    string decrypted {};
+
+    // vector to store positions of each character
+    vector<int> pos {};
+    vector<int> pos2 {};
+
+    cout << "Please enter a message to encrypt: ";
+    cin >> message;
+
+    // Iterate through the alphabet string to extrac the corresponding positions of characters
+    for (int i = 0; i < message.length(); ++i) {
+        for (int j = 0; j < alphabet.length(); ++j) {
+            if (message[i] == alphabet[j]) {
+                pos.push_back(j);
+            }
+        }
+    }
+
+    // Now encrpyt the message
+    for (int i = 0; i < pos.size(); ++i) {
+        for (int j = 0; j < key.length(); ++j) {
+            if (pos[i] == j) {
+                encrypted += key.at(j);
+            }
+        }
+    }
+    cout << "Encrypted message: " << encrypted << endl;
+
+    // Now lets Decrypt the message
+
+    // Iterate through the alphabet string to extrac the corresponding positions of characters
+    for (int i = 0; i < encrypted.length(); ++i) {
+        for (int j = 0; j < key.length(); ++j) {
+            if (encrypted[i] == key[j]) {
+                pos2.push_back(j);
+            }
+        }
+    }
+    // Now encrpyt the message
+    for (int i = 0; i < pos2.size(); ++i) {
+        for (int j = 0; j < alphabet.length(); ++j) {
+            if (pos2[i] == j) {
+                decrypted += alphabet.at(j);
+            }
+        }
+    }
+
+    cout << "Decrypted message: " << decrypted << endl;
+
     cout << endl;
     return 0;
 }

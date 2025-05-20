@@ -63,12 +63,105 @@ Good luck!
 
 */
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 int main() {
+
+    // create an empty vector
+    vector<int> list  = {};
+    char select;
+    int num;
+    int sum;
+    double mean;
+    int min, max;
+
+    do {
+        // Display menu to user, and prompt for options
+        cout << endl;
+        cout << "P - Print numbers" << endl;
+        cout << "A - Add a number" << endl;
+        cout << "M - Display mean of the numbers" << endl;
+        cout << "S - Display the smallest number" << endl;
+        cout << "L - Display the largest number" << endl;
+        cout << "Q - Quit" << endl;
+        cout << "\nEnter your choice: ";
+        cin >> select;
+
+        // Process the entry
+        if (select == 'P' || select == 'p') {
+            if (!list.empty()) {
+                cout << "[ ";
+                for (int i = 0; i < list.size(); ++i) {
+                    cout << list[i] << " ";
+                }
+                cout << "]" << endl;
+            }
+            else {
+                cout << "[] - the list is empty" << endl;
+            }
+        }
+        else if (select == 'A' || select == 'a') {
+            cout << "Enter an integer to add to the list: ";
+            cin >> num;
+            list.push_back(num);
+            cout << num << " added" << endl;
+        }
+        else if (select == 'M' || select == 'm') {
+            if (!list.empty()) {
+                sum = 0;
+                mean = 0;
+               for (int i = 0; i < list.size(); ++i) {
+                   sum += list[i];
+               }
+                mean = static_cast<double> (sum) / list.size();
+                cout << "Mean: " << mean << endl;
+            }
+            else {
+                cout << "Unable to calculate the mean - no data" << endl;
+            }
+        }
+        else if (select == 'S' || select == 's') {
+            if (!list.empty()) {
+                min = list[0];
+                for (int i = 0; i < list.size(); ++i) {
+                    if (list[i] < min) {
+                        min = list[i];
+                    }
+                }
+                cout << "The smallest number is " << min << endl;
+            }
+            else {
+                cout << "Unable to determine the smallest number - list is empty" << endl;
+            }
+        }
+        else if (select == 'L' || select == 'l') {
+
+            if (!list.empty()) {
+                max = list[0];
+                for (int i = 0; i < list.size(); ++i) {
+                    if (list[i] > max) {
+                        max = list[i];
+                    }
+                }
+                cout << "The largest number is " << max << endl;
+            }
+            else {
+                cout <<  "Unable to determine the largest number - list is empty" << endl;
+            }
+        }
+        else if (select == 'q' || select == 'Q') {
+            cout << "Goodbye" << endl;
+            break;
+        }
+        else {
+            cout << "Unknown selection, please try again" << endl;
+        }
+
+    } while (true);
     
-    cout << "Hello world" << endl;
+
     return 0;
 }
 
