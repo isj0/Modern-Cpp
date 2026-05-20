@@ -129,6 +129,43 @@ hello/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/build
 .PHONY : hello/fast
 
+#=============================================================================
+# Target rules for targets named battery
+
+# Build rule for target.
+battery: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 battery
+.PHONY : battery
+
+# fast build rule for target.
+battery/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battery.dir/build.make CMakeFiles/battery.dir/build
+.PHONY : battery/fast
+
+src/batteryMonitor.o: src/batteryMonitor.cpp.o
+.PHONY : src/batteryMonitor.o
+
+# target to build an object file
+src/batteryMonitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battery.dir/build.make CMakeFiles/battery.dir/src/batteryMonitor.cpp.o
+.PHONY : src/batteryMonitor.cpp.o
+
+src/batteryMonitor.i: src/batteryMonitor.cpp.i
+.PHONY : src/batteryMonitor.i
+
+# target to preprocess a source file
+src/batteryMonitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battery.dir/build.make CMakeFiles/battery.dir/src/batteryMonitor.cpp.i
+.PHONY : src/batteryMonitor.cpp.i
+
+src/batteryMonitor.s: src/batteryMonitor.cpp.s
+.PHONY : src/batteryMonitor.s
+
+# target to generate assembly for a file
+src/batteryMonitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battery.dir/build.make CMakeFiles/battery.dir/src/batteryMonitor.cpp.s
+.PHONY : src/batteryMonitor.cpp.s
+
 src/helloWorld.o: src/helloWorld.cpp.o
 .PHONY : src/helloWorld.o
 
@@ -161,7 +198,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... battery"
 	@echo "... hello"
+	@echo "... src/batteryMonitor.o"
+	@echo "... src/batteryMonitor.i"
+	@echo "... src/batteryMonitor.s"
 	@echo "... src/helloWorld.o"
 	@echo "... src/helloWorld.i"
 	@echo "... src/helloWorld.s"
